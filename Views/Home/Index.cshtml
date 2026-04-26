@@ -1,0 +1,67 @@
+﻿@model List<WebApplication10.Models.StudentCourse>
+
+<link rel="stylesheet" href="~/css/style.css" />
+
+<div class="container">
+
+    <h1 class="title">
+        🎓 Kurs Qeydiyyatı
+    </h1>
+
+    <form method="post">
+
+        <div class="form-group">
+
+            <input type="text"
+                   name="studentName"
+                   placeholder="Tələbənin adı və soyadı"
+                   required />
+
+            <select name="courseName">
+
+                <option value="Csharp">
+                    Csharp
+                </option>
+
+                <option value="Riyaziyyat">
+                    Riyaziyyat
+                </option>
+
+                <option value="İngilis dili">
+                    İngilis dili
+                </option>
+
+            </select>
+
+            <button type="submit"
+                    class="btn">
+
+                Qeydiyyatı Tamamla
+
+            </button>
+
+        </div>
+
+    </form>
+
+    @if (Model != null && Model.Count > 0)
+    {
+        <table>
+            <tr>
+                <th>Kurs</th>
+                <th>Tələbə</th>
+                <th>Status</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.CourseName</td>
+                    <td>@item.StudentName</td>
+                    <td>@item.CurrentCount / @item.Limit</td>
+                </tr>
+            }
+        </table>
+    }
+
+</div>
